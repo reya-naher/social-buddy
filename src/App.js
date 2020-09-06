@@ -11,22 +11,25 @@ import PostsDetail from './Components/PostsDetail/PostsDetail';
 
 function App() {
   return (
-    <div className="body">
+    <>
       <Router>
         <Switch>
-          <Route exact path="/">
+        <Route path = "/home">
+            <Home></Home>
+          </Route>        
+          <Route exact path = "/">
             <Home></Home>
           </Route>
-          <Route path="/posts/detail/:id">
+          <Route path = "/posts/detail/:id">
             <PostsDetail></PostsDetail>
           </Route>
-          <Route path="*">
+          <Route path = "*">
             <NoMatch></NoMatch>
           </Route>
         </Switch>
       </Router>
 
-    </div>
+    </>
   );
 }
 

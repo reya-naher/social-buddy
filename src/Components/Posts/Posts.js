@@ -1,61 +1,47 @@
 import React from 'react';
-import {Card, CardContent,Button,Typography} from '@material-ui/core';
-import {  useHistory } from 'react-router-dom';
+import { Card, CardContent, Button, Typography } from '@material-ui/core';
+import { useHistory } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
 
 const Posts = (props) => {
   const { classes } = props
-  const {id,userId,title} = props.post
+  const { id, title } = props.post
   //console.log(props.post);
   const history = useHistory();
   const handleClick = (userId) => {
     const url = `/posts/detail/${userId}`
     history.push(url)
   }
-//   const divStyle = {
-//     border: "5px solid gray",
-//     padding: "10px",
-//     margin: "10px"
-//   }
-  
-//   return (
-//     <div style={divStyle}>
-//         <h1>UserId: {userId}</h1>
-//         <h2>Id: {id}</h2>
-//         <p>Title: {title}</p>
-//         <button post={props.post} onClick={() => handleClick(id)}>See More</button>
-        
 
-//     </div>
-//   );
-// };
-
-// export default Posts;
-return ( 
-  <Card className={classes.item}>
-    <CardContent>
-    <Typography gutterBottom variant="h5" component="h2">
-            UserId: {userId}
-          </Typography>
-    <Typography variant="h5" component="p">
-    Id: {id}
-      </Typography>
-      <Typography variant="body2" component="p">
-     {title}
-      </Typography>
-      <br />
-      <Button variant="contained" color="primary" onClick={() => handleClick(id)}>See More</Button>
+  return (
+    <Card className = {classes.root}>
+      <CardContent className = {classes.cardSize}>
+        <Typography variant = "h6" component = "h6">
+          ID : {id}
+        </Typography>
+        <Typography variant = "body1" component = "p">
+          {title}
+        </Typography>
       </CardContent>
-      </Card>  
-);
+      <Button className={classes.btnCustom} variant="contained"
+        onClick = {() => handleClick(id)}> See More </Button>
+    </Card>
+  );
 };
 export default withStyles({
-  item: {
+  root: {
     width: "350px",
     margin: "1em",
     boxSizing: "border-box",
-    color: "#0A7F34",
-    textAlign:"center"
-    
+    textAlign: "center",
+    backgroundColor: "#e4f0ee",
+    boxShadow: "3px 4px 10px"
+  },
+  btnCustom: {
+    backgroundColor: "#0b7b67",
+    margin: "20px 0px"
+  },
+  cardSize: {
+    height: "60px"
   }
 })(Posts);

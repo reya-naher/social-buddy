@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { List, ListItem } from '@material-ui/core';
+import { Card, CardContent, Typography, Grid, Box } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
 const Comments = (props) => {
@@ -9,23 +9,35 @@ const Comments = (props) => {
   useEffect(() => {
     fetch('https://randomuser.me/api/?results=5')
       .then(res => res.json())
-    .then(data => setPhotos(data.results[0].picture.thumbnail))
-  },[id])
+      .then(data => setPhotos(data.results[0].picture.large))
+  }, [id])
   return (
-      <List className={classes.root}>
-        <ListItem><img style={{"height":"100px","borderRadius":"50px"}} src={photos} alt=""/></ListItem>
-        <ListItem>name:{name}</ListItem>
-        <ListItem>email:{email}</ListItem>
-        <ListItem>body: {body}</ListItem>
-      </List>
+    <Card className = {classes.root}>
+      <CardContent>
+        <Grid container item xs = {12}>
+          <Grid item xs = {2}>
+            <Box ml = {8}>
+              <img style = {{ "height": "100px", "borderRadius": "50%" }} src = {photos} alt = "" />
+            </Box>
+          </Grid>
+          <Grid item xs = {10}>
+            <Typography variant="h6" component="h6">Name: {name}
+            </Typography>
+            <Typography variant="h6" component="h6">Email: {email}
+            </Typography>
+            <Typography variant="body1" gutterBottom>Comment: {body}
+            </Typography>
+          </Grid>
+        </Grid>
+      </CardContent>
+    </Card>
   );
 };
 
 export default withStyles({
   root: {
-    width: '100%',
-    margin: "1em",
+    margin: "20px",
     boxSizing: "border-box",
-    border:"2px solid gray"
+    backgroundColor: "#EEF3F0"
   }
 })(Comments);
