@@ -39,9 +39,9 @@ const PostsDetail = (props) => {
            <br />
           <ArrowBackIcon /></Link></Button>
       </Card>
-      {
-        comments.map((comment, index) => <Comments key={index} comment={comment}></Comments>)
-      }
+          {
+            comments.map((comment, index) => <Comments key={index} comment={comment}></Comments>)
+          }
     </Grid>
   );
 };

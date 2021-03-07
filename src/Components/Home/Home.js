@@ -16,7 +16,7 @@ const Home = () => {
       <Grid item xs={12} container spacing={2} mt={10}
         justify = "center">
         {
-          posts.map(post => <Posts post={post} key = {post.id}></Posts>)
+          posts.map(post => <Posts post = {post} key = {post.id}></Posts>)
         }
       </Grid>
     </div>
